@@ -91,7 +91,6 @@ object-fit:cover !important;
 }
 }
 #rooms{scroll-margin-top:120px}
-.room-categories{max-width:1400px;margin:40px auto 0;padding:0 15px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
 .room-card{background:#fff;border:1px solid #e5e5e5;padding:30px 20px;text-align:center;border-radius:12px;transition:.3s;box-shadow:0 5px 20px rgba(0,0,0,.05)}
 .room-card:hover{transform:translateY(-6px);border-color:#b58a4a;box-shadow:0 12px 30px rgba(0,0,0,.1)}
 .room-card h3{font-size:22px;margin-bottom:12px;line-height:1.3}
@@ -108,12 +107,9 @@ object-fit:cover !important;
 .extra-venue .venue-grid img{width:100%;height:280px;object-fit:cover;border-radius:10px}
 @media(max-width:767px){.room-type-grid,.extra-venue .venue-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.room-type-grid img,.extra-venue .venue-grid img{height:180px}.room-card img{height:130px}.room-type h3{font-size:24px}}
 .room-card span{color:#b58a4a;font-weight:600}
-@media(max-width:991px){.room-categories{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:575px){.room-categories{grid-template-columns:1fr}}
 
 
 /* Carefully scoped layout refinements requested for the homepage */
-.room-categories{grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch;gap:22px}
 .room-card{padding:14px 14px 18px;border-radius:8px;box-shadow:0 5px 18px rgba(39,28,16,.08)}
 .room-card img{height:190px;object-fit:cover}
 .room-card h3{font-size:21px;min-height:54px;margin:8px 0 12px}
@@ -135,8 +131,8 @@ object-fit:cover !important;
 .nn-gallery-section .nn-gallery-filters{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:24px 0 30px}
 .nn-gallery-section .nn-gallery-filter{padding:9px 15px;border:1px solid #d8c6ad;background:#fff;color:#55402b;border-radius:2px;cursor:pointer}
 .nn-gallery-section .nn-gallery-filter.is-active,.nn-gallery-section .nn-gallery-filter:hover{background:#9a6b31;color:#fff;border-color:#9a6b31}
-@media(max-width:991px){.room-categories{grid-template-columns:repeat(2,minmax(0,1fr))}.room-type-grid,.nn-gallery-section .nn-gallery-grid,.extra-venue .venue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:575px){.room-categories{grid-template-columns:1fr 1fr;gap:10px;padding:0 12px}.room-card{padding:10px}.room-card img{height:125px}.room-card h3{font-size:16px;min-height:0}.room-type-grid,.nn-gallery-section .nn-gallery-grid,.extra-venue .venue-grid{grid-template-columns:1fr 1fr;gap:9px}.room-type-grid img,.nn-gallery-section .nn-gallery-photo,.extra-venue .venue-grid img{height:140px}.nn-detail-button{padding:9px 10px;font-size:12px}}
+@media(max-width:991px){.room-type-grid,.nn-gallery-section .nn-gallery-grid,.extra-venue .venue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:575px){.room-type-grid,.nn-gallery-section .nn-gallery-grid,.extra-venue .venue-grid{grid-template-columns:1fr 1fr;gap:9px}.room-type-grid img,.nn-gallery-section .nn-gallery-photo,.extra-venue .venue-grid img{height:140px}.nn-detail-button{padding:9px 10px;font-size:12px}}
 
 </style>
 <!-- InstanceEndEditable -->
@@ -442,7 +438,10 @@ body {
 
 
 <style id="nn-gallery-room-enhancements">
-.room-categories{grid-template-columns:repeat(5,minmax(0,1fr));}
+#rooms .room-categories{width:100%;max-width:1200px;margin:40px auto 0;padding:0 15px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch;gap:22px}
+#rooms .room-categories .room-card{display:flex;min-width:0;height:100%;flex-direction:column}
+#rooms .room-categories .room-card h3{display:flex;min-height:54px;align-items:center;justify-content:center}
+#rooms .room-categories .nn-detail-button{align-self:center;margin-top:auto}
 .room-card-category-only{display:flex;flex-direction:column;justify-content:center;min-height:235px;background:#fbf7f0;border-style:dashed;}
 .category-only-mark{font-size:34px;color:#b58a4a;margin:8px 0 20px}
 .room-card-category-only img{display:none!important}
@@ -459,9 +458,6 @@ body {
 .nn-gallery-filter{border:1px solid #d9c7ad;border-radius:999px;padding:10px 18px;background:#fff;color:#5c4a36;font-weight:600;cursor:pointer;transition:.2s}
 .nn-gallery-filter:hover,.nn-gallery-filter.is-active{background:#8a6539;color:#fff;border-color:#8a6539}
 #gallery .nn-gallery-carousel{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:12px}
-#gallery .nn-gallery-prev{grid-column:1}
-#gallery .nn-gallery-viewport{grid-column:2}
-#gallery .nn-gallery-next{grid-column:3}
 #gallery .nn-gallery-viewport{min-width:0;overflow:hidden}
 #gallery .nn-gallery-grid{display:flex;flex-wrap:nowrap;gap:18px;width:100%;transition:transform .45s ease;will-change:transform}
 #gallery .nn-gallery-grid .nn-gallery-item{flex:0 0 calc((100% - 54px)/4);width:calc((100% - 54px)/4)}
@@ -484,9 +480,11 @@ body {
 .nn-lightbox p{position:absolute;bottom:24px;left:80px;right:80px;text-align:center;color:#fff;margin:0}
 .nn-lightbox button{position:absolute;border:0;color:#fff;background:rgba(255,255,255,.14);border-radius:50%;width:44px;height:44px;cursor:pointer;font-size:18px}
 .nn-lightbox-close{top:22px;right:24px}.nn-lightbox-prev{left:22px;top:50%;transform:translateY(-50%)}.nn-lightbox-next{right:22px;top:50%;transform:translateY(-50%)}
-@media(max-width:1100px){.nn-gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.room-categories{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:767px){.nn-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.nn-gallery-photo{height:170px}.nn-gallery-filters{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;padding:0 12px 8px}.nn-gallery-filter{white-space:nowrap}.room-categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.room-card{padding:12px}.room-card h3{font-size:18px}.room-type-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.room-type-grid img{height:180px}.room-detail-copy ul{grid-template-columns:1fr}.nn-lightbox{padding:55px 12px 75px}.nn-lightbox img{max-width:94vw;max-height:72vh}.nn-lightbox p{left:15px;right:15px}.nn-lightbox-prev{left:8px}.nn-lightbox-next{right:8px}}
-@media(max-width:420px){.nn-gallery-grid{grid-template-columns:1fr 1fr}.nn-gallery-photo{height:145px}.room-categories{grid-template-columns:1fr 1fr}}
+@media(max-width:1100px){.nn-gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:991px){#rooms .room-categories{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:767px){.nn-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.nn-gallery-photo{height:170px}.nn-gallery-filters{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;padding:0 12px 8px}.nn-gallery-filter{white-space:nowrap}#rooms .room-categories{gap:10px}#rooms .room-card{padding:12px}#rooms .room-card h3{font-size:18px}.room-type-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.room-type-grid img{height:180px}.room-detail-copy ul{grid-template-columns:1fr}.nn-lightbox{padding:55px 12px 75px}.nn-lightbox img{max-width:94vw;max-height:72vh}.nn-lightbox p{left:15px;right:15px}.nn-lightbox-prev{left:8px}.nn-lightbox-next{right:8px}}
+@media(max-width:575px){#rooms .room-categories{grid-template-columns:minmax(0,1fr)}#rooms .room-card{padding:10px}#rooms .room-card img{height:125px}#rooms .room-card h3{font-size:16px;min-height:0}}
+@media(max-width:420px){.nn-gallery-grid{grid-template-columns:1fr 1fr}.nn-gallery-photo{height:145px}}
 @media(max-width:1100px){#gallery .nn-gallery-grid .nn-gallery-item{flex-basis:calc((100% - 36px)/3);width:calc((100% - 36px)/3)}}
 @media(max-width:767px){#gallery .nn-gallery-carousel{grid-template-columns:36px minmax(0,1fr) 36px;gap:8px}#gallery .nn-gallery-grid{gap:10px}#gallery .nn-gallery-grid .nn-gallery-item{flex-basis:calc((100% - 10px)/2);width:calc((100% - 10px)/2)}#gallery .nn-gallery-arrow{width:36px;height:36px;font-size:20px}}
 @media(max-width:420px){#gallery .nn-gallery-grid .nn-gallery-item{flex-basis:calc((100% - 10px)/2);width:calc((100% - 10px)/2)}}
@@ -628,6 +626,47 @@ body {
     
       </div>
     </div>
+  <!-- Facade 3 - Extra Slide -->
+<div class="slide">
+  <div class="slide__img">
+    <img
+      src=""
+      alt="Narayan Niwas Palace Facade 3"
+      data-lazy="images/narayanniwas/facade-3.webp"
+      class="full-image animated"
+      data-animation-in="zoomInImage"
+    />
+  </div>
+  <div class="slide__content slide__content__left"></div>
+</div>
+
+<!-- Facade 4 - Extra Slide -->
+<div class="slide">
+  <div class="slide__img">
+    <img
+      src=""
+      alt="Narayan Niwas Palace Facade 4"
+      data-lazy="images/narayanniwas/facade-4.webp"
+      class="full-image animated"
+      data-animation-in="zoomOutImage"
+    />
+  </div>
+  <div class="slide__content slide__content__left"></div>
+</div>
+
+<!-- Extra Garden Slide -->
+<div class="slide">
+  <div class="slide__img">
+    <img
+      src=""
+      alt="Beautiful Garden at Narayan Niwas Palace"
+      data-lazy="images/narayanniwas/garden-area-user.png"
+      class="full-image animated"
+      data-animation-in="zoomInImage"
+    />
+  </div>
+  <div class="slide__content slide__content__left"></div>
+</div>
 			 	 <div class="slide">
       <div class="slide__img">
         <img src="" alt="" data-lazy="images/narayanniwas/facade-6.jpg" class="full-image animated" data-animation-in="zoomInImage"/>
@@ -751,7 +790,7 @@ body {
   </div>
   <div class="room-info"><ul class="room-inner-list"><li><i class="fa-solid fa-circle"></i> Heritage-inspired interiors</li><li><i class="fa-solid fa-circle"></i> Comfortable bedding</li><li><i class="fa-solid fa-circle"></i> Warm personalised hospitality</li></ul></div>
   <div class="bottom-text"><p>Choose the room category that suits your journey. Explore the room galleries below to view the actual supplied room photographs, including interior details and washroom views where included in the room photo sets.</p></div>
-  <div class="room-categories"><a class="room-card" href="#classic-room"><img src="images/narayanniwas/classic-1.webp" alt="Classic Room at Narayan Niwas Palace" loading="lazy"><h3>Classic Room</h3><span>Room category</span><span class="nn-detail-button">View Full Details</span></a><a class="room-card" href="#heritage-room"><img src="images/narayanniwas/heritage-1.webp" alt="Heritage Room at Narayan Niwas Palace" loading="lazy"><h3>Heritage Room</h3><span>Room category</span><span class="nn-detail-button">View Full Details</span></a><a class="room-card" href="#royal-room"><img src="images/narayanniwas/royal-1.webp" alt="Royal Room (Courtyard Facing) at Narayan Niwas Palace" loading="lazy"><h3>Royal Room (Courtyard Facing)</h3><span>Room category</span><span class="nn-detail-button">View Full Details</span></a><a class="room-card" href="#signature-suite"><img src="images/narayanniwas/suite-1.webp" alt="Signature Suite Room at Narayan Niwas Palace" loading="lazy"><h3>Signature Suite Room</h3><span>Room category</span><span class="nn-detail-button">View Full Details</span></a><div class="room-card room-card-category-only"><div class="category-only-mark"><i class="fa-solid fa-water"></i></div><h3>Narayan Niwas Suite Room with Plunge Pool</h3><span>Room category</span><a class="nn-detail-button" href="#pool">Explore Pool</a></div></div>
+  <div class="room-categories"><a class="room-card" href="#classic-room"><img src="images/narayanniwas/classic-1.webp" alt="Classic Room at Narayan Niwas Palace" loading="lazy"><h3>Classic Room</h3><span>Room category</span><span class="nn-detail-button">View Full Details</span></a><a class="room-card" href="#heritage-room"><img src="images/narayanniwas/heritage-1.webp" alt="Heritage Room at Narayan Niwas Palace" loading="lazy"><h3>Heritage Room</h3><span>Room category</span><span class="nn-detail-button">View Full Details</span></a><a class="room-card" href="#royal-room"><img src="images/narayanniwas/royal-1.webp" alt="Royal Room (Courtyard Facing) at Narayan Niwas Palace" loading="lazy"><h3>Royal Room (Courtyard Facing)</h3><span>Room category</span><span class="nn-detail-button">View Full Details</span></a><a class="room-card" href="#signature-suite"><img src="images/narayanniwas/suite-1.webp" alt="Signature Suite Room at Narayan Niwas Palace" loading="lazy"><h3>Signature Suite Room</h3><span>Room category</span><span class="nn-detail-button">View Full Details</span></a></div></div>
   <div class="room-type-galleries"><section class="room-type" id="classic-room">
       <div class="room-type-heading"><span class="sub-title">Thoughtfully Designed</span><h3>Classic Room</h3><p>A welcoming heritage stay with comfortable bedding, warm textures and thoughtfully arranged interiors. Ideal for guests seeking a relaxing base from which to explore Jaisalmer.</p></div>
       <div class="room-type-grid"><img src="images/narayanniwas/classic-1.webp" alt="Classic Room — view 1" loading="lazy"><img src="images/narayanniwas/classic-2.webp" alt="Classic Room — view 2" loading="lazy"><img src="images/narayanniwas/classic-3.webp" alt="Classic Room — view 3" loading="lazy"><img src="images/narayanniwas/classic-4.webp" alt="Classic Room — view 4" loading="lazy"><img src="images/narayanniwas/classic-5.webp" alt="Classic Room — view 5" loading="lazy"><img src="images/narayanniwas/classic-6.webp" alt="Classic Room — view 6" loading="lazy"><img src="images/narayanniwas/classic-7.webp" alt="Classic Room — view 7" loading="lazy"></div>
@@ -834,7 +873,13 @@ body {
 <section class="page-section extra-venue" id="rooftop">
   <div class="container">
     <div class="section-heading"><span class="sub-title">Sunset & Skyline</span><h2>Rooftop View</h2><p>Take in the open skyline from the rooftop terrace, with outdoor seating and beautiful sunset-to-evening ambience.</p></div>
-    <div class="venue-grid"><img src="images/narayanniwas/rooftop-1.webp" alt="Rooftop terrace at dusk"><img src="images/narayanniwas/rooftop-2.webp" alt="Rooftop sunset view"><img src="images/narayanniwas/rooftop-3.webp" alt="Rooftop evening seating"></div>
+    <div class="rooftop-gallery">
+      <img class="rooftop-gallery__main" src="images/narayanniwas/rooftop-1.webp" alt="Rooftop dining terrace overlooking Jaisalmer Fort" loading="lazy">
+      <div class="rooftop-gallery__thumbnails">
+        <img src="images/narayanniwas/rooftop-user-1.png" alt="Rooftop terrace with Jaisalmer Fort view" loading="lazy">
+        <img src="images/narayanniwas/rooftop-user-2.jpeg" alt="Palace garden courtyard and evening seating" loading="lazy">
+      </div>
+    </div>
   </div>
 </section>
 
@@ -852,9 +897,9 @@ body {
     <div class="col-lg-4 col-md-4">
         <div class="card-box__item card-box__item--offers fac-box">
             <div class="card-box__image-outer card-box__image-outer--offers">
-                <img src="images/narayanniwas/facade-4.webp"
+                <img src="images/narayanniwas/garden-area-user.png"
                      class="card-box__image card-box__image--offers"
-                     alt="Garden Area">
+                     alt="Garden courtyard at sunset, supplied photo">
             </div>
 
             <div class="card-box__item-description card-box__item-description--offers">
@@ -933,6 +978,85 @@ body {
             </div>
 	
 		
+
+<section class="page-section nn-package-section" id="package">
+  <div class="container">
+    <div class="section-heading text-center">
+      <span class="sub-title">Celebrate with us</span>
+      <h2>Special Packages</h2>
+      <p>Explore exclusive seasonal offers at Narayan Niwas Palace.</p>
+    </div>
+
+    <div class="nn-package-grid">
+
+      <article class="nn-package-card">
+        <a class="nn-package-image"
+           href="images/narayanniwas/new-year-package.jpeg"
+           target="_blank" rel="noopener">
+          <img src="images/narayanniwas/new-year-package.jpeg"
+               alt="New Year Package">
+        </a>
+        <div class="nn-package-card-footer">
+          <h3>New Year Package</h3>
+          <button class="nn-view-details"
+                  onclick="openPackageDetails('new-year')">
+            View Full Details <span>↗</span>
+          </button>
+        </div>
+      </article>
+
+      <article class="nn-package-card">
+        <a class="nn-package-image"
+           href="images/narayanniwas/winter-package.jpeg"
+           target="_blank" rel="noopener">
+          <img src="images/narayanniwas/winter-package.jpeg"
+               alt="Winter Package">
+        </a>
+        <div class="nn-package-card-footer">
+          <h3>Winter Package</h3>
+          <button class="nn-view-details"
+                  onclick="openPackageDetails('winter')">
+            View Full Details <span>↗</span>
+          </button>
+        </div>
+      </article>
+
+      <article class="nn-package-card">
+        <a class="nn-package-image"
+           href="images/narayanniwas/diwali-package.jpeg"
+           target="_blank" rel="noopener">
+          <img src="images/narayanniwas/diwali-package.jpeg"
+               alt="Diwali Package">
+        </a>
+        <div class="nn-package-card-footer">
+          <h3>Diwali Package</h3>
+          <button class="nn-view-details"
+                  onclick="openPackageDetails('diwali')">
+            View Full Details <span>↗</span>
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGE DETAILS MODAL -->
+<div class="nn-package-modal" id="nnPackageModal"
+     aria-hidden="true">
+  <div class="nn-modal-overlay" onclick="closePackageDetails()"></div>
+
+  <div class="nn-modal-box" role="dialog"
+       aria-modal="true" aria-labelledby="nnModalTitle">
+    <button class="nn-modal-close"
+            onclick="closePackageDetails()"
+            aria-label="Close details">&times;</button>
+
+    <div id="nnModalContent"></div>
+  </div>
+</div>
+
+
 		     <div class="page-section page-section--small-padding" id="experiences">
             <div class="container">
                           <h2 class="slider-box__subtitle c-title c-title--subtitle c-title--gray text-center"> Experiences</h2>
@@ -946,8 +1070,8 @@ body {
                                         class="slide-item">
 										<div class="slider-box__slide-meta-b slider-box__slide-meta-b--text-bottom ">
                                         <img width="2000" height="1322"
-                                            src="images/narayanniwas/rooftop-1.webp"
-                                            class="slider-box__image swiper-lazy" alt="Rooftop terrace at Narayan Niwas Palace" />
+                                            src="https://thesaffrondesertcamp.com/wp-content/uploads/2023/08/camel-safari-in-jaisalmer.jpg"
+                                            class="slider-box__image swiper-lazy" alt="Real camel safari on the golden dunes of Jaisalmer" />
 											
 											<div class="exp-box">
 												<h3>Desert Safari Experience</h3>
@@ -961,8 +1085,8 @@ body {
                                         class="slide-item">
 										<div class="slider-box__slide-meta-b slider-box__slide-meta-b--text-bottom ">
                                         <img width="2000" height="1168"
-                                            src="images/narayanniwas/pool-3.webp"
-                                            class="slider-box__image swiper-lazy" alt="Pool area at Narayan Niwas Palace" />
+                                            src="https://i0.wp.com/www.tusktravel.com/blog/wp-content/uploads/2021/03/Kalbeliya-Dance-Rajasthan.jpg?resize=1200%2C799&amp;ssl=1"
+                                            class="slider-box__image swiper-lazy" alt="Rajasthani folk dance and live musicians at Jaisalmer Desert Festival" />
                                         
 												<div class="exp-box">
 												<h3>Cultural & Folk Performances</h3>
@@ -975,8 +1099,8 @@ body {
                                         class="slide-item">
 										  <div class="slider-box__slide-meta-b slider-box__slide-meta-b--text-bottom ">
                                         <img width="2000" height="1168"
-                                            src="images/narayanniwas/cafe-12.webp"
-                                            class="slider-box__image swiper-lazy" alt="Open café at Narayan Niwas Palace" />
+                                            src="https://www.rajasthandriver.com/img/attractions/667x445_jaisalmer-fort-3.jpg"
+                                            class="slider-box__image swiper-lazy" alt="Jaisalmer Fort golden sandstone architecture" />
                                          
 											  <div class="exp-box">
 												<h3>Jaisalmer Fort Visit</h3>
@@ -1003,7 +1127,7 @@ body {
   <div class="section-heading"><span class="sub-title">Explore Every Corner</span><h2>Photo Gallery</h2><p>Browse the supplied photographs by room and property area. Select a category to see its images, then open any photo for a larger view.</p></div>
   <div class="nn-gallery-filters" role="group" aria-label="Filter gallery photos"><button type="button" class="nn-gallery-filter is-active" data-filter="all" aria-pressed="true">All Photos</button><button type="button" class="nn-gallery-filter" data-filter="Classic Room" aria-pressed="false">Classic Room</button><button type="button" class="nn-gallery-filter" data-filter="Heritage Room" aria-pressed="false">Heritage Room</button><button type="button" class="nn-gallery-filter" data-filter="Royal Room" aria-pressed="false">Royal Room</button><button type="button" class="nn-gallery-filter" data-filter="Signature Suite" aria-pressed="false">Signature Suite</button><button type="button" class="nn-gallery-filter" data-filter="Facade" aria-pressed="false">Facade</button><button type="button" class="nn-gallery-filter" data-filter="Lobby & Reception" aria-pressed="false">Lobby & Reception</button><button type="button" class="nn-gallery-filter" data-filter="Lobby" aria-pressed="false">Lobby</button><button type="button" class="nn-gallery-filter" data-filter="Open Cafe" aria-pressed="false">Open Café</button><button type="button" class="nn-gallery-filter" data-filter="Pool" aria-pressed="false">Pool</button><button type="button" class="nn-gallery-filter" data-filter="Restaurant" aria-pressed="false">Restaurant</button><button type="button" class="nn-gallery-filter" data-filter="Rooftop" aria-pressed="false">Rooftop</button></div>
   <div class="nn-gallery-grid"><div class="nn-gallery-item" data-category="Courtyard"><a aria-label="Open updated Courtyard photograph" class="nn-gallery-open" href="images/narayanniwas/courtyard-updated.jpg"><img alt="Updated courtyard at Narayan Niwas Palace" class="nn-gallery-photo" loading="lazy" src="images/narayanniwas/courtyard-updated.jpg"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Courtyard</figcaption></div><div class="nn-gallery-item" data-category="Lobby"><a aria-label="Open updated Lobby photograph" class="nn-gallery-open" href="images/narayanniwas/lobby-updated.jpg"><img alt="Updated lobby at Narayan Niwas Palace" class="nn-gallery-photo" loading="lazy" src="images/narayanniwas/lobby-updated.jpg"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Lobby</figcaption></div><figure class="nn-gallery-item" data-category="Classic Room"><a href="images/narayanniwas/classic-1.webp" class="nn-gallery-open" aria-label="Open Classic Room photograph 1"><img src="images/narayanniwas/classic-1.webp" alt="Classic Room photograph 1" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Classic Room</figcaption></figure><figure class="nn-gallery-item" data-category="Classic Room"><a href="images/narayanniwas/classic-2.webp" class="nn-gallery-open" aria-label="Open Classic Room photograph 2"><img src="images/narayanniwas/classic-2.webp" alt="Classic Room photograph 2" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Classic Room</figcaption></figure><figure class="nn-gallery-item" data-category="Classic Room"><a href="images/narayanniwas/classic-3.webp" class="nn-gallery-open" aria-label="Open Classic Room photograph 3"><img src="images/narayanniwas/classic-3.webp" alt="Classic Room photograph 3" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Classic Room</figcaption></figure><figure class="nn-gallery-item" data-category="Classic Room"><a href="images/narayanniwas/classic-4.webp" class="nn-gallery-open" aria-label="Open Classic Room photograph 4"><img src="images/narayanniwas/classic-4.webp" alt="Classic Room photograph 4" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Classic Room</figcaption></figure><figure class="nn-gallery-item" data-category="Classic Room"><a href="images/narayanniwas/classic-5.webp" class="nn-gallery-open" aria-label="Open Classic Room photograph 5"><img src="images/narayanniwas/classic-5.webp" alt="Classic Room photograph 5" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Classic Room</figcaption></figure><figure class="nn-gallery-item" data-category="Classic Room"><a href="images/narayanniwas/classic-6.webp" class="nn-gallery-open" aria-label="Open Classic Room photograph 6"><img src="images/narayanniwas/classic-6.webp" alt="Classic Room photograph 6" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Classic Room</figcaption></figure><figure class="nn-gallery-item" data-category="Classic Room"><a href="images/narayanniwas/classic-7.webp" class="nn-gallery-open" aria-label="Open Classic Room photograph 7"><img src="images/narayanniwas/classic-7.webp" alt="Classic Room photograph 7" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Classic Room</figcaption></figure><figure class="nn-gallery-item" data-category="Heritage Room"><a href="images/narayanniwas/heritage-1.webp" class="nn-gallery-open" aria-label="Open Heritage Room photograph 1"><img src="images/narayanniwas/heritage-1.webp" alt="Heritage Room photograph 1" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Heritage Room</figcaption></figure><figure class="nn-gallery-item" data-category="Heritage Room"><a href="images/narayanniwas/heritage-2.webp" class="nn-gallery-open" aria-label="Open Heritage Room photograph 2"><img src="images/narayanniwas/heritage-2.webp" alt="Heritage Room photograph 2" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Heritage Room</figcaption></figure><figure class="nn-gallery-item" data-category="Heritage Room"><a href="images/narayanniwas/heritage-3.webp" class="nn-gallery-open" aria-label="Open Heritage Room photograph 3"><img src="images/narayanniwas/heritage-3.webp" alt="Heritage Room photograph 3" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Heritage Room</figcaption></figure><figure class="nn-gallery-item" data-category="Heritage Room"><a href="images/narayanniwas/heritage-4.webp" class="nn-gallery-open" aria-label="Open Heritage Room photograph 4"><img src="images/narayanniwas/heritage-4.webp" alt="Heritage Room photograph 4" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Heritage Room</figcaption></figure><figure class="nn-gallery-item" data-category="Heritage Room"><a href="images/narayanniwas/heritage-5.webp" class="nn-gallery-open" aria-label="Open Heritage Room photograph 5"><img src="images/narayanniwas/heritage-5.webp" alt="Heritage Room photograph 5" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Heritage Room</figcaption></figure><figure class="nn-gallery-item" data-category="Heritage Room"><a href="images/narayanniwas/heritage-6.webp" class="nn-gallery-open" aria-label="Open Heritage Room photograph 6"><img src="images/narayanniwas/heritage-6.webp" alt="Heritage Room photograph 6" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Heritage Room</figcaption></figure><figure class="nn-gallery-item" data-category="Royal Room"><a href="images/narayanniwas/royal-1.webp" class="nn-gallery-open" aria-label="Open Royal Room photograph 1"><img src="images/narayanniwas/royal-1.webp" alt="Royal Room photograph 1" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Royal Room</figcaption></figure><figure class="nn-gallery-item" data-category="Royal Room"><a href="images/narayanniwas/royal-2.webp" class="nn-gallery-open" aria-label="Open Royal Room photograph 2"><img src="images/narayanniwas/royal-2.webp" alt="Royal Room photograph 2" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Royal Room</figcaption></figure><figure class="nn-gallery-item" data-category="Royal Room"><a href="images/narayanniwas/royal-3.webp" class="nn-gallery-open" aria-label="Open Royal Room photograph 3"><img src="images/narayanniwas/royal-3.webp" alt="Royal Room photograph 3" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Royal Room</figcaption></figure><figure class="nn-gallery-item" data-category="Royal Room"><a href="images/narayanniwas/royal-4.webp" class="nn-gallery-open" aria-label="Open Royal Room photograph 4"><img src="images/narayanniwas/royal-4.webp" alt="Royal Room photograph 4" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Royal Room</figcaption></figure><figure class="nn-gallery-item" data-category="Royal Room"><a href="images/narayanniwas/royal-5.webp" class="nn-gallery-open" aria-label="Open Royal Room photograph 5"><img src="images/narayanniwas/royal-5.webp" alt="Royal Room photograph 5" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Royal Room</figcaption></figure><figure class="nn-gallery-item" data-category="Royal Room"><a href="images/narayanniwas/royal-6.webp" class="nn-gallery-open" aria-label="Open Royal Room photograph 6"><img src="images/narayanniwas/royal-6.webp" alt="Royal Room photograph 6" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Royal Room</figcaption></figure><figure class="nn-gallery-item" data-category="Signature Suite"><a href="images/narayanniwas/suite-1.webp" class="nn-gallery-open" aria-label="Open Signature Suite photograph 1"><img src="images/narayanniwas/suite-1.webp" alt="Signature Suite photograph 1" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Signature Suite</figcaption></figure><figure class="nn-gallery-item" data-category="Signature Suite"><a href="images/narayanniwas/suite-2.webp" class="nn-gallery-open" aria-label="Open Signature Suite photograph 2"><img src="images/narayanniwas/suite-2.webp" alt="Signature Suite photograph 2" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Signature Suite</figcaption></figure><figure class="nn-gallery-item" data-category="Signature Suite"><a href="images/narayanniwas/suite-3.webp" class="nn-gallery-open" aria-label="Open Signature Suite photograph 3"><img src="images/narayanniwas/suite-3.webp" alt="Signature Suite photograph 3" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Signature Suite</figcaption></figure><figure class="nn-gallery-item" data-category="Signature Suite"><a href="images/narayanniwas/suite-4.webp" class="nn-gallery-open" aria-label="Open Signature Suite photograph 4"><img src="images/narayanniwas/suite-4.webp" alt="Signature Suite photograph 4" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Signature Suite</figcaption></figure><figure class="nn-gallery-item" data-category="Signature Suite"><a href="images/narayanniwas/suite-5.webp" class="nn-gallery-open" aria-label="Open Signature Suite photograph 5"><img src="images/narayanniwas/suite-5.webp" alt="Signature Suite photograph 5" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Signature Suite</figcaption></figure><figure class="nn-gallery-item" data-category="Signature Suite"><a href="images/narayanniwas/suite-6.webp" class="nn-gallery-open" aria-label="Open Signature Suite photograph 6"><img src="images/narayanniwas/suite-6.webp" alt="Signature Suite photograph 6" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Signature Suite</figcaption></figure><figure class="nn-gallery-item" data-category="Signature Suite"><a href="images/narayanniwas/suite-7.webp" class="nn-gallery-open" aria-label="Open Signature Suite photograph 7"><img src="images/narayanniwas/suite-7.webp" alt="Signature Suite photograph 7" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Signature Suite</figcaption></figure><figure class="nn-gallery-item" data-category="Signature Suite"><a href="images/narayanniwas/suite-8.webp" class="nn-gallery-open" aria-label="Open Signature Suite photograph 8"><img src="images/narayanniwas/suite-8.webp" alt="Signature Suite photograph 8" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Signature Suite</figcaption></figure><figure class="nn-gallery-item" data-category="Facade"><a href="images/narayanniwas/facade-1.webp" class="nn-gallery-open" aria-label="Open Facade photograph 1"><img src="images/narayanniwas/facade-1.webp" alt="Facade photograph 1" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Facade</figcaption></figure><figure class="nn-gallery-item" data-category="Facade"><a href="images/narayanniwas/facade-2.webp" class="nn-gallery-open" aria-label="Open Facade photograph 2"><img src="images/narayanniwas/facade-2.webp" alt="Facade photograph 2" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Facade</figcaption></figure><figure class="nn-gallery-item" data-category="Facade"><a href="images/narayanniwas/facade-3.webp" class="nn-gallery-open" aria-label="Open Facade photograph 3"><img src="images/narayanniwas/facade-3.webp" alt="Facade photograph 3" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Facade</figcaption></figure><figure class="nn-gallery-item" data-category="Facade"><a href="images/narayanniwas/facade-4.webp" class="nn-gallery-open" aria-label="Open Facade photograph 4"><img src="images/narayanniwas/facade-4.webp" alt="Facade photograph 4" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Facade</figcaption></figure><figure class="nn-gallery-item" data-category="Facade"><a href="images/narayanniwas/facade-5.webp" class="nn-gallery-open" aria-label="Open Facade photograph 5"><img src="images/narayanniwas/facade-5.webp" alt="Facade photograph 5" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Facade</figcaption></figure><figure class="nn-gallery-item" data-category="Facade"><a href="images/narayanniwas/facade-6.webp" class="nn-gallery-open" aria-label="Open Facade photograph 6"><img src="images/narayanniwas/facade-6.webp" alt="Facade photograph 6" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Facade</figcaption></figure><figure class="nn-gallery-item" data-category="Lobby & Reception"><a href="images/narayanniwas/reception-1.webp" class="nn-gallery-open" aria-label="Open Lobby & Reception photograph 1"><img src="images/narayanniwas/reception-1.webp" alt="Lobby & Reception photograph 1" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Lobby & Reception</figcaption></figure><figure class="nn-gallery-item" data-category="Lobby & Reception"><a href="images/narayanniwas/reception-2.webp" class="nn-gallery-open" aria-label="Open Lobby & Reception photograph 2"><img src="images/narayanniwas/reception-2.webp" alt="Lobby & Reception photograph 2" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Lobby & Reception</figcaption></figure><figure class="nn-gallery-item" data-category="Lobby & Reception"><a href="images/narayanniwas/reception-3(1).webp" class="nn-gallery-open" aria-label="Open Lobby & Reception photograph 3"><img src="images/narayanniwas/reception-3(1).webp" alt="Lobby & Reception photograph 3" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Lobby & Reception</figcaption></figure><figure class="nn-gallery-item" data-category="Lobby & Reception"><a href="images/narayanniwas/reception-3.webp" class="nn-gallery-open" aria-label="Open Lobby & Reception photograph 3"><img src="images/narayanniwas/reception-3.webp" alt="Lobby & Reception photograph 3" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Lobby & Reception</figcaption></figure><figure class="nn-gallery-item" data-category="Lobby & Reception"><a href="images/narayanniwas/reception-4.webp" class="nn-gallery-open" aria-label="Open Lobby & Reception photograph 4"><img src="images/narayanniwas/reception-4.webp" alt="Lobby & Reception photograph 4" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Lobby & Reception</figcaption></figure><figure class="nn-gallery-item" data-category="Lobby"><a href="images/narayanniwas/lobby-1.webp" class="nn-gallery-open" aria-label="Open Lobby photograph 1"><img src="images/narayanniwas/lobby-1.webp" alt="Lobby photograph 1" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Lobby</figcaption></figure><figure class="nn-gallery-item" data-category="Lobby"><a href="images/narayanniwas/lobby-2.webp" class="nn-gallery-open" aria-label="Open Lobby photograph 2"><img src="images/narayanniwas/lobby-2.webp" alt="Lobby photograph 2" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Lobby</figcaption></figure><figure class="nn-gallery-item" data-category="Open Cafe"><a href="images/narayanniwas/cafe-11.webp" class="nn-gallery-open" aria-label="Open Open Café photograph 11"><img src="images/narayanniwas/cafe-11.webp" alt="Open Café photograph 11" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Open Café</figcaption></figure><figure class="nn-gallery-item" data-category="Open Cafe"><a href="images/narayanniwas/cafe-12.webp" class="nn-gallery-open" aria-label="Open Open Café photograph 12"><img src="images/narayanniwas/cafe-12.webp" alt="Open Café photograph 12" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Open Café</figcaption></figure><figure class="nn-gallery-item" data-category="Open Cafe"><a href="images/narayanniwas/cafe-13.webp" class="nn-gallery-open" aria-label="Open Open Café photograph 13"><img src="images/narayanniwas/cafe-13.webp" alt="Open Café photograph 13" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Open Café</figcaption></figure><figure class="nn-gallery-item" data-category="Open Cafe"><a href="images/narayanniwas/cafe-15.webp" class="nn-gallery-open" aria-label="Open Open Café photograph 15"><img src="images/narayanniwas/cafe-15.webp" alt="Open Café photograph 15" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Open Café</figcaption></figure><figure class="nn-gallery-item" data-category="Pool"><a href="images/narayanniwas/pool-2.webp" class="nn-gallery-open" aria-label="Open Pool photograph 2"><img src="images/narayanniwas/pool-2.webp" alt="Pool photograph 2" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Pool</figcaption></figure><figure class="nn-gallery-item" data-category="Pool"><a href="images/narayanniwas/pool-3.webp" class="nn-gallery-open" aria-label="Open Pool photograph 3"><img src="images/narayanniwas/pool-3.webp" alt="Pool photograph 3" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Pool</figcaption></figure><figure class="nn-gallery-item" data-category="Pool"><a href="images/narayanniwas/pool-4.webp" class="nn-gallery-open" aria-label="Open Pool photograph 4"><img src="images/narayanniwas/pool-4.webp" alt="Pool photograph 4" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Pool</figcaption></figure><figure class="nn-gallery-item" data-category="Pool"><a href="images/narayanniwas/pool-5.webp" class="nn-gallery-open" aria-label="Open Pool photograph 5"><img src="images/narayanniwas/pool-5.webp" alt="Pool photograph 5" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Pool</figcaption></figure><figure class="nn-gallery-item" data-category="Pool"><a href="images/narayanniwas/pool-6.webp" class="nn-gallery-open" aria-label="Open Pool photograph 6"><img src="images/narayanniwas/pool-6.webp" alt="Pool photograph 6" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Pool</figcaption></figure><figure class="nn-gallery-item" data-category="Pool"><a href="images/narayanniwas/pool-7.webp" class="nn-gallery-open" aria-label="Open Pool photograph 7"><img src="images/narayanniwas/pool-7.webp" alt="Pool photograph 7" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Pool</figcaption></figure><figure class="nn-gallery-item" data-category="Restaurant"><a href="images/narayanniwas/restaurant-1.webp" class="nn-gallery-open" aria-label="Open Restaurant photograph 1"><img src="images/narayanniwas/restaurant-1.webp" alt="Restaurant photograph 1" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Restaurant</figcaption></figure><figure class="nn-gallery-item" data-category="Restaurant"><a href="images/narayanniwas/restaurant-3.webp" class="nn-gallery-open" aria-label="Open Restaurant photograph 3"><img src="images/narayanniwas/restaurant-3.webp" alt="Restaurant photograph 3" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Restaurant</figcaption></figure><figure class="nn-gallery-item" data-category="Restaurant"><a href="images/narayanniwas/restaurant-4.webp" class="nn-gallery-open" aria-label="Open Restaurant photograph 4"><img src="images/narayanniwas/restaurant-4.webp" alt="Restaurant photograph 4" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Restaurant</figcaption></figure><figure class="nn-gallery-item" data-category="Restaurant"><a href="images/narayanniwas/restaurant-5.webp" class="nn-gallery-open" aria-label="Open Restaurant photograph 5"><img src="images/narayanniwas/restaurant-5.webp" alt="Restaurant photograph 5" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Restaurant</figcaption></figure><figure class="nn-gallery-item" data-category="Restaurant"><a href="images/narayanniwas/restaurant-8.webp" class="nn-gallery-open" aria-label="Open Restaurant photograph 8"><img src="images/narayanniwas/restaurant-8.webp" alt="Restaurant photograph 8" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Restaurant</figcaption></figure><figure class="nn-gallery-item" data-category="Rooftop"><a href="images/narayanniwas/rooftop-1.webp" class="nn-gallery-open" aria-label="Open Rooftop photograph 1"><img src="images/narayanniwas/rooftop-1.webp" alt="Rooftop photograph 1" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Rooftop</figcaption></figure><figure class="nn-gallery-item" data-category="Rooftop"><a href="images/narayanniwas/rooftop-2.webp" class="nn-gallery-open" aria-label="Open Rooftop photograph 2"><img src="images/narayanniwas/rooftop-2.webp" alt="Rooftop photograph 2" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Rooftop</figcaption></figure><figure class="nn-gallery-item" data-category="Rooftop"><a href="images/narayanniwas/rooftop-3.webp" class="nn-gallery-open" aria-label="Open Rooftop photograph 3"><img src="images/narayanniwas/rooftop-3.webp" alt="Rooftop photograph 3" loading="lazy" class="nn-gallery-photo"><span class="nn-gallery-zoom"><i class="fa-solid fa-expand"></i></span></a><figcaption>Rooftop</figcaption></figure></div>
-  <p class="nn-gallery-count" aria-live="polite">Showing all 60 photographs</p>
+  <p class="nn-gallery-count" aria-live="polite">Showing all 58 photographs</p>
  </div>
  <div class="nn-lightbox" id="nnLightbox" aria-hidden="true"><button type="button" class="nn-lightbox-close" aria-label="Close photo"><i class="fa-solid fa-xmark"></i></button><button type="button" class="nn-lightbox-prev" aria-label="Previous photo"><i class="fa-solid fa-chevron-left"></i></button><img src="" alt="" id="nnLightboxImage"><button type="button" class="nn-lightbox-next" aria-label="Next photo"><i class="fa-solid fa-chevron-right"></i></button><p id="nnLightboxCaption"></p></div>
 </section>
@@ -1310,13 +1434,6 @@ body {
   const items=[...section.querySelectorAll('.nn-gallery-item')];
   const count=section.querySelector('.nn-gallery-count');
   const track=section.querySelector('.nn-gallery-grid');
-  const featuredItems=['Rooftop','Lobby','Open Cafe']
-    .map(category=>items.find(item=>item.dataset.category===category))
-    .filter(Boolean);
-  [...new Set([...featuredItems,...items])].forEach(item=>track.appendChild(item));
-  const featuredFilters=filters.filter(button=>['all','Rooftop','Lobby','Open Cafe'].includes(button.dataset.filter));
-  [...featuredFilters,...filters.filter(button=>!featuredFilters.includes(button))]
-    .forEach(button=>button.parentNode.appendChild(button));
   const carousel=document.createElement('div');
   carousel.className='nn-gallery-carousel';
   carousel.setAttribute('aria-label','Photo gallery carousel');
