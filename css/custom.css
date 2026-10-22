@@ -2807,3 +2807,41 @@ ul.social-links-inner-page li:last-child a{
 @media(prefers-reduced-motion:reduce) {
   #experiences .slider-box__slide-meta-b { transition: none; }
 }
+/* Fix Narayan Niwas Gallery Image Visibility */
+.nn-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  width: 100%;
+}
+
+.nn-gallery-item {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.nn-gallery-item[hidden] {
+  display: none !important;
+}
+
+.nn-gallery-item img.nn-gallery-photo {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 768px) {
+  .nn-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .nn-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}

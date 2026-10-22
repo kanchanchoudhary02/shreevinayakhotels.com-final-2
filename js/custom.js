@@ -194,7 +194,6 @@
     document.body.style.overflow = "";
   }
 
-  // Make functions available to inline HTML onclick handlers.
   window.openPackageDetails = openPackageDetails;
   window.closePackageDetails = closePackageDetails;
 
@@ -203,11 +202,69 @@
   // ==============================
   ready(function () {
     var loader = document.querySelector(".loader-mask");
+
     if (loader) {
       loader.style.display = "none";
     }
 
-    // Hero and main sliders
+    // ==============================
+    // PHOTO GALLERY FILTER
+    // ==============================
+    var gallery = document.querySelector(".nn-gallery-section");
+
+    if (gallery) {
+      var filters = gallery.querySelectorAll(".nn-gallery-filter");
+      var galleryItems = gallery.querySelectorAll(".nn-gallery-item");
+      var count = gallery.querySelector(".nn-gallery-count");
+
+      function filterGallery(category) {
+        var visibleCount = 0;
+
+        galleryItems.forEach(function (item) {
+          var itemCategory = item.getAttribute("data-category");
+
+          var shouldShow =
+            category === "all" || itemCategory === category;
+
+          item.hidden = !shouldShow;
+
+          if (shouldShow) {
+            visibleCount++;
+          }
+        });
+
+        if (count) {
+          count.textContent =
+            category === "all"
+              ? "Showing all " + visibleCount + " photographs"
+              : "Showing " + visibleCount +
+                " photographs in " + category;
+        }
+      }
+
+      filters.forEach(function (button) {
+        button.addEventListener("click", function () {
+          var category = button.getAttribute("data-filter");
+
+          filters.forEach(function (filter) {
+            filter.classList.remove("is-active");
+            filter.setAttribute("aria-pressed", "false");
+          });
+
+          button.classList.add("is-active");
+          button.setAttribute("aria-pressed", "true");
+
+          filterGallery(category);
+        });
+      });
+
+      // Show all photos on initial page load
+      filterGallery("all");
+    }
+
+    // ==============================
+    // HERO AND MAIN SLIDERS
+    // ==============================
     if (window.jQuery && jQuery.fn && jQuery.fn.slick) {
       var hero = jQuery(".hero .slider");
 
@@ -248,7 +305,9 @@
       }
     }
 
-    // Mobile navigation
+    // ==============================
+    // MOBILE NAVIGATION
+    // ==============================
     var toggle = document.querySelector(".menu-btn");
     var menu = document.querySelector(".menu-items");
 
@@ -272,7 +331,9 @@
       });
     }
 
-    // Close package popup with Escape
+    // ==============================
+    // CLOSE PACKAGE POPUP WITH ESCAPE
+    // ==============================
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape") {
         closePackageDetails();
