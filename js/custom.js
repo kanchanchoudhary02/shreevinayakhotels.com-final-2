@@ -202,6 +202,11 @@
   // INITIALIZE WEBSITE
   // ==============================
   ready(function () {
+    var loader = document.querySelector(".loader-mask");
+    if (loader) {
+      loader.style.display = "none";
+    }
+
     // Hero and main sliders
     if (window.jQuery && jQuery.fn && jQuery.fn.slick) {
       var hero = jQuery(".hero-hotel .slider");
