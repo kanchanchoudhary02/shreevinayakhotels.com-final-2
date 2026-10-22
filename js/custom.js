@@ -209,7 +209,7 @@
 
     // Hero and main sliders
     if (window.jQuery && jQuery.fn && jQuery.fn.slick) {
-      var hero = jQuery(".hero-hotel .slider");
+      var hero = jQuery(".hero .slider");
 
       if (hero.length && !hero.hasClass("slick-initialized")) {
         hero.slick({
