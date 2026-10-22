@@ -4,9 +4,12 @@
     else fn();
   }
   ready(function () {
+    var loader = document.querySelector('.loader-mask');
+    if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
+
     // Keep the supplied hero photographs unchanged while ensuring the slider can initialise.
     if (window.jQuery && jQuery.fn && jQuery.fn.slick) {
-      var hero = jQuery('.hero-hotel .slider');
+      var hero = jQuery('.hero-hotel .slider, .banner__slider .slider');
       if (hero.length && !hero.hasClass('slick-initialized')) {
         hero.slick({ slidesToShow: 1, slidesToScroll: 1, autoplay: true, autoplaySpeed: 5000, arrows: true, dots: true, fade: true, adaptiveHeight: false });
       }
